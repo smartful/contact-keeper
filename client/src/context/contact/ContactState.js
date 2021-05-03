@@ -31,8 +31,8 @@ const ContactState = ({ children }) => {
       },
       {
         id: 3,
-        name: "Sara Winston",
-        email: "sara.winston@gmail.com",
+        name: "Tara Winston",
+        email: "tara.winston@yahoo.com",
         phone: "333-333-333",
         type: "professional"
       },

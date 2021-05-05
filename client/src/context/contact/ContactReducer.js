@@ -8,7 +8,7 @@ import {
   CLEAR_FILTER
 } from '../types';
 
-export default (state, action) => {
+const ContactReducer = (state, action) => {
   switch (action.type) {
     case ADD_CONTACT:
       return {
@@ -53,4 +53,6 @@ export default (state, action) => {
     default:
       return state;
   }
-}
+};
+
+export default ContactReducer;

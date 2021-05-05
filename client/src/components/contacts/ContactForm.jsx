@@ -18,6 +18,7 @@ function ContactForm() {
     } else {
       setContact(initialContact);
     }
+    // eslint-disable-next-line
   }, [current]);
 
   const handleChange = (e) => setContact({ ...contact, [e.target.name]: e.target.value });

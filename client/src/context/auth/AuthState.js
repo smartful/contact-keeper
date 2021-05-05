@@ -53,9 +53,23 @@ const AuthState = ({ children }) => {
     }
   };
 
-  const loadIn = () => console.log('Load In !');
+  const logIn = async (formData) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
-  const loadOut = () => console.log('Load Out !');
+    try {
+      const res = await axios.post('/api/auth', formData, config);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      loadUser();
+    } catch (error) {
+      dispatch({ type: LOGIN_FAIL, payload: error.response.data.msg });
+    }
+  };
+
+  const logOut = () => console.log('Load Out !');
 
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
@@ -69,8 +83,8 @@ const AuthState = ({ children }) => {
         error: state.error,
         register,
         loadUser,
-        loadIn,
-        loadOut,
+        logIn,
+        logOut,
         clearErrors,
       }}
     >

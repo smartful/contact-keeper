@@ -69,7 +69,7 @@ const AuthState = ({ children }) => {
     }
   };
 
-  const logOut = () => console.log('Load Out !');
+  const logOut = () => dispatch({ type: LOGOUT, payload: null });
 
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 

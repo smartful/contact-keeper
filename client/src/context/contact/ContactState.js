@@ -62,7 +62,21 @@ const ContactState = ({ children }) => {
 
   const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
 
-  const updateContact = (contact) => dispatch({ type: UPDATE_CONTACT, payload: contact });
+  const updateContact = async (contact) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.put(`/api/contacts/${contact._id}`, contact, config);
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
+    } catch (error) {
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg});
+    }
+
+  }
 
   const filterContacts = (text) => dispatch({ type: FILTER_CONTACTS, payload: text });
 
